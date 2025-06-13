@@ -1,24 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Calorie Tracker
 
-## Getting Started
+A mobile-first web application for tracking daily calories using AI-powered food recognition. Take photos of your meals and get instant calorie estimates using OpenAI's Vision API.
 
-First, run the development server:
+## Features
+
+- 📱 Mobile-optimized PWA design
+- 📸 Camera integration for food photos
+- 🤖 AI-powered calorie estimation using OpenAI GPT-4 Vision
+- 🎯 Personal goal setting (weight loss, gain, or maintenance)
+- 📊 Daily calorie tracking and progress visualization
+- 💾 Local storage for offline functionality
+- 🍽️ Meal categorization (breakfast, lunch, dinner, snacks)
+
+## Setup Instructions
+
+### 1. Clone and Install
+
+```bash
+cd calorie-tracker
+npm install
+```
+
+### 2. Configure OpenAI API
+
+1. Get your OpenAI API key from [OpenAI Platform](https://platform.openai.com/api-keys)
+2. Copy `.env.example` to `.env.local`:
+   ```bash
+   cp .env.example .env.local
+   ```
+3. Add your API key to `.env.local`:
+   ```
+   NEXT_PUBLIC_OPENAI_API_KEY=your_openai_api_key_here
+   ```
+
+### 3. Run the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser or mobile device.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Set Your Goal**: Choose whether you want to lose, gain, or maintain weight
+2. **Take Photos**: Use the camera button to photograph your meals
+3. **Review AI Analysis**: Confirm or edit the AI's calorie estimation
+4. **Track Progress**: View your daily calorie intake and remaining goals
+
+## Mobile Features
+
+- Responsive design optimized for phones
+- Native camera access
+- Touch-friendly interface
+- Offline data storage
+- PWA capabilities for home screen installation
 
 ## Learn More
 
