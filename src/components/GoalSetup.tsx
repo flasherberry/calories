@@ -50,7 +50,7 @@ export default function GoalSetup({ onComplete }: GoalSetupProps) {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-3">
-              What's your goal?
+              What&apos;s your goal?
             </label>
             <div className="grid grid-cols-3 gap-2">
               {[
@@ -61,7 +61,7 @@ export default function GoalSetup({ onComplete }: GoalSetupProps) {
                 <button
                   key={option.value}
                   type="button"
-                  onClick={() => setGoalType(option.value as any)}
+                  onClick={() => setGoalType(option.value as 'lose' | 'gain' | 'maintain')}
                   className={`p-3 rounded-xl text-center transition-all ${
                     goalType === option.value
                       ? 'bg-blue-500 text-white shadow-lg'

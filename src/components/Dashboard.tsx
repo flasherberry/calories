@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Plus, Target, TrendingUp, Clock, Settings } from 'lucide-react';
-import { UserGoal, DayData, Meal, NutritionInfo } from '@/types';
-import { getDayData, getTodayString, getUserGoal } from '@/utils/storage';
+import { Plus, Settings } from 'lucide-react';
+import { UserGoal, DayData, NutritionInfo } from '@/types';
+import { getDayData, getTodayString } from '@/utils/storage';
 import CameraCapture from './CameraCapture';
 import MealLogger from './MealLogger';
 
@@ -36,7 +36,7 @@ export default function Dashboard({ userGoal, onEditGoal }: DashboardProps) {
     setShowMealLogger(true);
   };
 
-  const handleMealSaved = (meal: Meal) => {
+  const handleMealSaved = () => {
     loadTodayData();
     setShowMealLogger(false);
     setCurrentNutritionInfo(null);
@@ -53,7 +53,7 @@ export default function Dashboard({ userGoal, onEditGoal }: DashboardProps) {
   const progressPercentage = Math.min(((todayData?.totalCalories || 0) / userGoal.dailyCalories) * 100, 100);
   
   const getMealsByType = (type: string) => {
-    return todayData?.meals.filter(meal => meal.type === type) || [];
+    return todayData?.meals.filter(mealItem => mealItem.type === type) || [];
   };
 
   const mealTypes = [
@@ -69,7 +69,7 @@ export default function Dashboard({ userGoal, onEditGoal }: DashboardProps) {
         {/* Header */}
         <div className="bg-blue-500 text-white p-6 rounded-b-3xl">
           <div className="flex justify-between items-center mb-4">
-            <h1 className="text-2xl font-bold">Today's Progress</h1>
+            <h1 className="text-2xl font-bold">Today&apos;s Progress</h1>
             <button
               onClick={onEditGoal}
               className="text-white hover:text-blue-200"
@@ -127,21 +127,21 @@ export default function Dashboard({ userGoal, onEditGoal }: DashboardProps) {
 
                 {meals.length > 0 ? (
                   <div className="space-y-2">
-                    {meals.map((meal) => (
-                      <div key={meal.id} className="flex items-center space-x-3 p-2 bg-gray-50 rounded-lg">
-                        {meal.image && (
+                    {meals.map((mealItem) => (
+                      <div key={mealItem.id} className="flex items-center space-x-3 p-2 bg-gray-50 rounded-lg">
+                        {mealItem.image && (
                           <img
-                            src={`data:image/jpeg;base64,${meal.image}`}
-                            alt={meal.name}
+                            src={`data:image/jpeg;base64,${mealItem.image}`}
+                            alt={mealItem.name}
                             className="w-12 h-12 object-cover rounded-lg"
                           />
                         )}
                         <div className="flex-1">
-                          <div className="font-medium text-gray-800">{meal.name}</div>
-                          <div className="text-sm text-gray-600">{meal.calories} cal</div>
+                          <div className="font-medium text-gray-800">{mealItem.name}</div>
+                          <div className="text-sm text-gray-600">{mealItem.calories} cal</div>
                         </div>
                         <div className="text-xs text-gray-500">
-                          {new Date(meal.timestamp).toLocaleTimeString([], { 
+                          {new Date(mealItem.timestamp).toLocaleTimeString([], { 
                             hour: '2-digit', 
                             minute: '2-digit' 
                           })}

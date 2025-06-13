@@ -75,7 +75,7 @@ export default function MealLogger({ nutritionInfo, imageBase64, onSave, onCance
                 <button
                   key={type.value}
                   type="button"
-                  onClick={() => setMealType(type.value as any)}
+                  onClick={() => setMealType(type.value as 'breakfast' | 'lunch' | 'dinner' | 'snack')}
                   className={`p-3 rounded-lg text-center transition-all ${
                     mealType === type.value
                       ? 'bg-blue-500 text-white'
